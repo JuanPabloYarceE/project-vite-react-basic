@@ -76,7 +76,21 @@ const ScriptRunner = () => {
           }
           console.log(nPrimes);
           return nPrimes;
-      }
+      },
+
+      rotateLeftN : () => {
+        const l = [];
+        const n = prompt(">: ");
+        const a = Array.from({ length: 10 }, () => Math.floor(Math.random() * (15 + 1)));
+        l.push(a);
+
+        for(let i = 0; i < n; i++){
+            a.push(a[i]);
+            a.shift();
+        }
+        l.push(a);
+        return l;
+    }
   };
 
   const ejecutarScript = (scriptName) => {
@@ -107,6 +121,8 @@ const ScriptRunner = () => {
         <AccordionItem title="reverseArray" />
         <AccordionItem title="highToLow" />
         <AccordionItem title="firstnPrimes" />
+        <AccordionItem title="rotateLeftN" />
+
 
           {/* Agrega más botones para ejecutar otros scripts */}
         </div>
