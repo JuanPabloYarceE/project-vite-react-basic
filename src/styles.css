@@ -1,0 +1,34 @@
+/* styles.css */
+
+/* Estilos para el botón */
+.buttonStyle {
+    width: 100%;
+    border: 1px solid #ccc;
+    borderRadius: 5px;
+    padding: 10px;
+    marginBottom: 5px;
+    backgroundColor: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buttonStyle:hover {
+    background-color: #cce5ff;
+  }
+  
+  /* Estilos para el acordeón */
+  .accordionStyle {
+    border-right: 10px solid #ccc;
+    width: 15%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  /* Estilos para el contenido */
+  .contentStyle {
+    margin-left: 15%;
+  }
+  
