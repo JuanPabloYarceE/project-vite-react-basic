@@ -4,12 +4,13 @@
 .buttonStyle {
     width: 100%;
     border: 1px solid #ccc;
-    borderRadius: 5px;
+    border-radius: 5px; /* Cambiado de borderRadius a border-radius */
     padding: 10px;
-    marginBottom: 5px;
-    backgroundColor: #fff;
+    margin-bottom: 5px; /* Cambiado de marginBottom a margin-bottom */
+    background-color: #fff;
     transition: background-color 0.3s ease;
   }
+  
   
   .buttonStyle:hover {
     background-color: #cce5ff;
