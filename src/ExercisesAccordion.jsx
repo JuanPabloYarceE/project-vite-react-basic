@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import "./styles.css"; // Importa el archivo de estilos CSS
+import "./styles.css"; 
 import AccordionItem from "./AccordionItem";
-import scripts from "./scripts"; // Importa el objeto scripts desde el nuevo archivo
+import scripts from "./scripts"; 
+import StatusButton from "./StatusButton";
+import ClearButton from './ClearButton';
+import CounterButton from "./CounterButton";
 
 const ScriptRunner = () => {
   const [resultado, setResultado] = useState('');
   const [isOn, setOn] = useState(true);
   const [counter, setCounter] = useState(0);
-
-  const textButton = isOn
-  ? 'Encendido'
-  : 'Apagado'
-
-  const buttonClassName = isOn
-    ? 'button-17 isOn'
-    : 'button-17'
 
   const ejecutarScript = (scriptName) => {
     if (!isOn) return; 
@@ -39,12 +34,13 @@ const ScriptRunner = () => {
     setResultado('');
   }
 
-  const testClick = () => {
+  const count = () => {
     setCounter(counter+1);
   }
 
   const renderAccordionItems = () => {
     const scriptNames = Object.keys(scripts);
+    console.log(scriptNames, "<--------------");
     return scriptNames.map((scriptName) => (
       <AccordionItem
         key={scriptName}
@@ -63,9 +59,9 @@ const ScriptRunner = () => {
           <h1>Resultados</h1>
           <pre>{resultado}</pre>
         </div>
-        <button className='button-17' id='clearButton' onClick={clear}>Clear</button>
-        <button className={buttonClassName} id='statusButton' onClick={handleClick}>{textButton}</button>
-        <button className="button-17" onClick={testClick}>{counter} </button>
+        <ClearButton clear={clear}/> 
+        <StatusButton isOn={isOn} handleClick={handleClick} /> 
+        <CounterButton counter={counter} count={count} />
       </>
     );
   };
