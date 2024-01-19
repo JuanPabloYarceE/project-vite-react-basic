@@ -6,6 +6,7 @@ import scripts from "./scripts"; // Importa el objeto scripts desde el nuevo arc
 const ScriptRunner = () => {
   const [resultado, setResultado] = useState('');
   const [isOn, setOn] = useState(true);
+  const [counter, setCounter] = useState(0);
 
   const textButton = isOn
   ? 'Encendido'
@@ -38,10 +39,17 @@ const ScriptRunner = () => {
     setResultado('');
   }
 
+  const testClick = () => {
+    setCounter(counter+1);
+  }
+
   const renderAccordionItems = () => {
     const scriptNames = Object.keys(scripts);
     return scriptNames.map((scriptName) => (
-      <AccordionItem key={scriptName} title={scriptName} ejecutarScript={ejecutarScript} />
+      <AccordionItem
+        key={scriptName}
+        title={scriptName}
+        ejecutarScript={ejecutarScript} />
     ));
   };
 
@@ -57,6 +65,7 @@ const ScriptRunner = () => {
         </div>
         <button className='button-17' id='clearButton' onClick={clear}>Clear</button>
         <button className={buttonClassName} id='statusButton' onClick={handleClick}>{textButton}</button>
+        <button className="button-17" onClick={testClick}>{counter} </button>
       </>
     );
   };
