@@ -5,8 +5,18 @@ import scripts from "./scripts"; // Importa el objeto scripts desde el nuevo arc
 
 const ScriptRunner = () => {
   const [resultado, setResultado] = useState('');
+  const [isOn, setOn] = useState(true);
+
+  const textButton = isOn
+  ? 'Encendido'
+  : 'Apagado'
+
+  const buttonClassName = isOn
+    ? 'button-17 isOn'
+    : 'button-17'
 
   const ejecutarScript = (scriptName) => {
+    if (!isOn) return; 
     try {
       const resultadoScript = scripts[scriptName]();
       //console.log(resultadoScript + " <---------");
@@ -16,6 +26,17 @@ const ScriptRunner = () => {
       setResultado(`Error al ejecutar el script: ${error.message}`);
     }
   };
+
+  const handleClick = () => {
+    setOn(!isOn);
+    if (isOn) {
+      setResultado(''); // Limpiar la pizarra cuando se apaga
+    }
+  }
+
+  const clear = () => {
+    setResultado('');
+  }
 
   const renderAccordionItems = () => {
     const scriptNames = Object.keys(scripts);
@@ -28,17 +49,14 @@ const ScriptRunner = () => {
     return (
       <>
         <div className="accordionStyle">
-          {/*  <AccordionItem title="reverseArray" ejecutarScript={ejecutarScript} />
-        <AccordionItem title="highToLow" ejecutarScript={ejecutarScript} />
-        <AccordionItem title="firstnPrimes" ejecutarScript={ejecutarScript}/>
-        <AccordionItem title="rotateLeftN" ejecutarScript={ejecutarScript}/>
-        <AccordionItem title="addAllDigits" ejecutarScript={ejecutarScript}/> */}
           {renderAccordionItems()}
         </div>
         <div className="contentStyle">
           <h1>Resultados</h1>
           <pre>{resultado}</pre>
         </div>
+        <button className='button-17' id='clearButton' onClick={clear}>Clear</button>
+        <button className={buttonClassName} id='statusButton' onClick={handleClick}>{textButton}</button>
       </>
     );
   };
