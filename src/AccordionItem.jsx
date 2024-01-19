@@ -1,17 +1,11 @@
 // AccordionItem.js
-
 import React from "react";
-import "./styles.css"; // Importa el archivo de estilos CSS específico para AccordionItem
+import "./styles.css";
 
-const AccordionItem = ({ title, onButtonClick }) => {
-  return (
-    <button
-      className="buttonStyle"
-      onClick={() => onButtonClick(title)}
-    >
-      {title}
-    </button>
-  );
-};
+const AccordionItem = ({ title, ejecutarScript }) => (
+  <button className="buttonStyle" onClick={() => ejecutarScript(title)}>
+    {title}
+  </button>
+);
 
 export default AccordionItem;
